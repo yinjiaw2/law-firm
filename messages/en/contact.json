@@ -9,25 +9,81 @@
     "title": "What is the primary reason for your inquiry today?",
     "description": "Choose the option that best matches your current migration matter.",
     "options": {
-      "planning": {
-        "label": "A",
-        "description": "I want to plan a new visa application."
+      "planning": { "description": "I want to plan a new visa application." },
+      "crisis": { "description": "I have received a visa refusal or cancellation." },
+      "art": { "description": "I need representation for an ART case." },
+      "general": { "description": "I am interested in Australian citizenship or other general advice." }
+    }
+  },
+  "step2": {
+    "planning": {
+      "phase": "Phase 2: Visa Planning",
+      "location": {
+        "title": "Where are you currently located?",
+        "options": {
+          "onshore": { "description": "Inside Australia (Onshore)" },
+          "offshore": { "description": "Outside Australia (Offshore)" }
+        }
       },
-      "crisis": {
-        "label": "B",
-        "description": "I have received a visa refusal or cancellation."
+      "current_visa": {
+        "title": "What is your current visa subclass?",
+        "options": {
+          "student_500": { "description": "Student Visa (500)" },
+          "graduate_485": { "description": "Temporary Graduate (485)" },
+          "work_482": { "description": "Temporary Work (482/494)" },
+          "visitor_600": { "description": "Visitor Visa (600)" },
+          "other": { "description": "Other (Bridging, WHV, etc.)" }
+        }
       },
-      "art": {
-        "label": "C",
-        "description": "I need representation for an ART case."
+      "migration_stream": {
+        "title": "What is your primary Migration Stream of interest?",
+        "options": {
+          "skilled": { "description": "Skilled Migration (General Skilled Migration)" },
+          "employer": { "description": "Employer Sponsorship (Work Visas)" },
+          "business": { "description": "Business & Investment" },
+          "family": { "description": "Family / Partner / Parent" }
+        }
+      }
+    },
+    "crisis": {
+      "phase": "Phase 2: Crisis Assessment",
+      "notification_date": {
+        "title": "When did you receive the official notification from the Department?",
+        "options": {
+          "within_7": { "description": "Within the last 7 days (Critical Priority)" },
+          "within_21": { "description": "8 to 21 days ago" },
+          "over_21": { "description": "More than 21 days ago" },
+          "no_letter": { "description": "I don't have the letter with me right now." }
+        }
       },
-      "general": {
-        "label": "D",
-        "description": "I am interested in Australian citizenship or other general advice."
+      "refusal_issue": {
+        "title": "What was the specific issue mentioned in the letter?",
+        "options": {
+          "gte": { "description": "GTE (Genuine Temporary Entrant) or Genuine Visitor concerns." },
+          "financial": { "description": "Financial capacity or fraudulent document claims." },
+          "skills": { "description": "Skills Assessment or Work Experience criteria not met." },
+          "health": { "description": "Health or Character requirements." },
+          "breach": { "description": "Breach of current visa conditions." }
+        }
+      },
+      "bridging_visa": {
+        "title": "Are you currently on a Bridging Visa?",
+        "options": {
+          "bva_bvb_bvc": { "description": "Yes (BVA, BVB, or BVC)" },
+          "bve": { "description": "Yes (BVE)" },
+          "substantive": { "description": "No, I still hold a substantive visa." },
+          "none": { "description": "No, I have no valid visa at the moment." }
+        }
       }
     }
   },
   "validation": {
-    "primaryReasonRequired": "Please select a reason before continuing."
+    "primaryReasonRequired": "Please select a reason before continuing.",
+    "locationRequired": "Please select your current location.",
+    "currentVisaRequired": "Please select your current visa subclass.",
+    "migrationStreamRequired": "Please select a migration stream.",
+    "notificationDateRequired": "Please select when you received the notification.",
+    "refusalIssueRequired": "Please select the issue mentioned in the letter.",
+    "bridgingVisaRequired": "Please select your current visa status."
   }
 }

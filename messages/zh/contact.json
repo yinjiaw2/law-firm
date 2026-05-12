@@ -9,22 +9,10 @@
     "title": "您今天咨询的主要原因是什么？",
     "description": "请选择最符合您当前移民事务的选项。",
     "options": {
-      "planning": {
-        "label": "A",
-        "description": "我想规划新的签证申请。"
-      },
-      "crisis": {
-        "label": "B",
-        "description": "我已收到签证拒签或取消通知。"
-      },
-      "art": {
-        "label": "C",
-        "description": "我需要 ART 案件代理服务。"
-      },
-      "general": {
-        "label": "D",
-        "description": "我对澳大利亚公民申请或其他一般建议感兴趣。"
-      }
+      "planning": { "description": "我想规划新的签证申请。" },
+      "crisis": { "description": "我已收到签证拒签或取消通知。" },
+      "art": { "description": "我需要 ART 案件代理服务。" },
+      "general": { "description": "我对澳大利亚公民申请或其他一般建议感兴趣。" }
     }
   },
   "validation": {

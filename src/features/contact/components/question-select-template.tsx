@@ -8,9 +8,10 @@ import {
   type FieldValues,
 } from "react-hook-form";
 
+const LABELS = ["A", "B", "C", "D", "E"] as const;
+
 type QuestionSelectOption<TValue extends string> = {
   description: string;
-  label: string;
   value: TValue;
 };
 
@@ -21,12 +22,7 @@ type QuestionSelectTemplateProps<
   control: Control<TFieldValues>;
   errorMessage?: string;
   name: FieldPath<TFieldValues>;
-  options: readonly [
-    QuestionSelectOption<TValue>,
-    QuestionSelectOption<TValue>,
-    QuestionSelectOption<TValue>,
-    QuestionSelectOption<TValue>,
-  ];
+  options: readonly [QuestionSelectOption<TValue>, QuestionSelectOption<TValue>, ...QuestionSelectOption<TValue>[]];
   question: {
     description?: string;
     requiredMessage: string;
@@ -62,7 +58,7 @@ export function QuestionSelectTemplate<
             ) : null}
           </div>
           <div className="flex flex-1 flex-col gap-6">
-            {options.map((option) => {
+            {options.map((option, index) => {
               const isSelected = field.value === option.value;
 
               return (
@@ -78,7 +74,7 @@ export function QuestionSelectTemplate<
                     }
                   />
                   <p className="text-sm font-medium text-primary">
-                    {option.label}
+                    {LABELS[index]}
                   </p>
                   <div className="flex flex-1 flex-col gap-1">
                     <p className="text-sm text-muted-foreground">

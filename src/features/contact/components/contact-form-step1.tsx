@@ -20,13 +20,12 @@ export function ContactFormStep1({
   const validationT = useTranslations("contact.validation");
   const options = reasonOptions.map((reason) => ({
     description: t(`options.${reason}.description`),
-    label: t(`options.${reason}.label`),
     value: reason,
   })) as [
-    { description: string; label: string; value: PrimaryReason },
-    { description: string; label: string; value: PrimaryReason },
-    { description: string; label: string; value: PrimaryReason },
-    { description: string; label: string; value: PrimaryReason },
+    { description: string; value: PrimaryReason },
+    { description: string; value: PrimaryReason },
+    { description: string; value: PrimaryReason },
+    { description: string; value: PrimaryReason },
   ];
 
   return (
