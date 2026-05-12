@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/card";
 import { ContactFormStep1 } from "@/src/features/contact/components/contact-form-step1";
 import { ContactFormStep2 } from "@/src/features/contact/components/contact-form-step2";
+import { ContactFormStep3 } from "@/src/features/contact/components/contact-form-step3";
 import type { ContactFormData } from "@/src/features/contact/models";
 import { useTranslations } from "next-intl";
 
@@ -21,6 +22,7 @@ export function ContactForm() {
 
   const {
     control,
+    getValues,
     handleSubmit,
     trigger,
     formState: { isSubmitting },
@@ -42,9 +44,30 @@ export function ContactForm() {
   const isHighUrgency = primaryReason === "crisis" || primaryReason === "art";
 
   const handleContinue = async () => {
-    const valid = await trigger("primary_reason");
-    if (!valid || !primaryReason) return;
-    setCurrentStep(primaryReason === "general" ? 3 : 2);
+    if (currentStep === 1) {
+      const valid = await trigger("primary_reason");
+      if (!valid || !primaryReason) return;
+
+      setCurrentStep(primaryReason === "general" ? 3 : 2);
+      setTimeout(() => {
+        clearErrors();
+      }, 0);
+      return;
+    }
+
+    if (currentStep === 2) {
+      const location = getValues("location");
+      const step2Fields = isHighUrgency
+        ? (["notification_date", "refusal_issue", "bridging_visa"] as const)
+        : location === "onshore"
+          ? (["location", "current_visa", "migration_stream"] as const)
+          : (["location", "migration_stream"] as const);
+
+      const valid = await trigger(step2Fields);
+      if (!valid) return;
+    }
+
+    setCurrentStep((step) => step + 1);
     setTimeout(() => {
       clearErrors();
     }, 0);
@@ -75,6 +98,8 @@ export function ContactForm() {
               />
             )}
 
+            {currentStep === 3 && <ContactFormStep3 control={control} />}
+
             <div className="flex items-center justify-between">
               {currentStep > 1 ? (
                 <Button
@@ -88,7 +113,7 @@ export function ContactForm() {
                 <div />
               )}
 
-              {currentStep === 1 ? (
+              {currentStep < 3 ? (
                 <Button
                   type="button"
                   onClick={handleContinue}
