@@ -8,16 +8,10 @@ import type { ContactFormData } from "@/src/features/contact/models";
 
 type ContactFormStep2Path1Props = {
   control: Control<ContactFormData>;
-  errorMessages?: {
-    location?: string;
-    current_visa?: string;
-    migration_stream?: string;
-  };
 };
 
 export function ContactFormStep2Path1({
   control,
-  errorMessages = {},
 }: ContactFormStep2Path1Props) {
   const t = useTranslations("contact.step2");
   const validationT = useTranslations("contact.validation");
@@ -32,7 +26,6 @@ export function ContactFormStep2Path1({
 
       <QuestionSelectTemplate
         control={control}
-        errorMessage={errorMessages.location}
         name="location"
         options={[
           { description: t("planning.location.options.onshore.description"), value: "onshore" },
@@ -47,7 +40,6 @@ export function ContactFormStep2Path1({
       {location === "onshore" && (
         <QuestionSelectTemplate
           control={control}
-          errorMessage={errorMessages.current_visa}
           name="current_visa"
           options={[
             { description: t("planning.current_visa.options.student_500.description"), value: "student_500" },
@@ -65,7 +57,6 @@ export function ContactFormStep2Path1({
 
       <QuestionSelectTemplate
         control={control}
-        errorMessage={errorMessages.migration_stream}
         name="migration_stream"
         options={[
           { description: t("planning.migration_stream.options.skilled.description"), value: "skilled" },

@@ -7,16 +7,10 @@ import type { ContactFormData } from "@/src/features/contact/models";
 
 type ContactFormStep2Path2Props = {
   control: Control<ContactFormData>;
-  errorMessages?: {
-    notification_date?: string;
-    refusal_issue?: string;
-    bridging_visa?: string;
-  };
 };
 
 export function ContactFormStep2Path2({
   control,
-  errorMessages = {},
 }: ContactFormStep2Path2Props) {
   const t = useTranslations("contact.step2");
   const validationT = useTranslations("contact.validation");
@@ -29,7 +23,6 @@ export function ContactFormStep2Path2({
 
       <QuestionSelectTemplate
         control={control}
-        errorMessage={errorMessages.notification_date}
         name="notification_date"
         options={[
           { description: t("crisis.notification_date.options.within_7.description"), value: "within_7" },
@@ -45,7 +38,6 @@ export function ContactFormStep2Path2({
 
       <QuestionSelectTemplate
         control={control}
-        errorMessage={errorMessages.refusal_issue}
         name="refusal_issue"
         options={[
           { description: t("crisis.refusal_issue.options.gte.description"), value: "gte" },
@@ -62,7 +54,6 @@ export function ContactFormStep2Path2({
 
       <QuestionSelectTemplate
         control={control}
-        errorMessage={errorMessages.bridging_visa}
         name="bridging_visa"
         options={[
           { description: t("crisis.bridging_visa.options.bva_bvb_bvc.description"), value: "bva_bvb_bvc" },

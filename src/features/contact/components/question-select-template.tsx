@@ -20,9 +20,12 @@ type QuestionSelectTemplateProps<
   TValue extends string,
 > = {
   control: Control<TFieldValues>;
-  errorMessage?: string;
   name: FieldPath<TFieldValues>;
-  options: readonly [QuestionSelectOption<TValue>, QuestionSelectOption<TValue>, ...QuestionSelectOption<TValue>[]];
+  options: readonly [
+    QuestionSelectOption<TValue>,
+    QuestionSelectOption<TValue>,
+    ...QuestionSelectOption<TValue>[],
+  ];
   question: {
     description?: string;
     requiredMessage: string;
@@ -35,7 +38,6 @@ export function QuestionSelectTemplate<
   TValue extends string,
 >({
   control,
-  errorMessage,
   name,
   options,
   question,
@@ -45,7 +47,7 @@ export function QuestionSelectTemplate<
       control={control}
       name={name}
       rules={{ required: question.requiredMessage }}
-      render={({ field }) => (
+      render={({ field, fieldState }) => (
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
             <h2 className="text-xl font-semibold text-foreground">
@@ -69,9 +71,13 @@ export function QuestionSelectTemplate<
                   <Checkbox
                     checked={isSelected}
                     onBlur={field.onBlur}
-                    onCheckedChange={(checked) =>
-                      field.onChange(checked ? option.value : undefined)
-                    }
+                    onCheckedChange={(checked) => {
+                      if (!checked && isSelected) {
+                        return;
+                      }
+
+                      field.onChange(option.value);
+                    }}
                   />
                   <p className="text-sm font-medium text-primary">
                     {LABELS[index]}
@@ -85,8 +91,10 @@ export function QuestionSelectTemplate<
               );
             })}
           </div>
-          {errorMessage ? (
-            <p className="text-sm text-destructive">{errorMessage}</p>
+          {fieldState.error?.message ? (
+            <p className="text-sm text-destructive">
+              {fieldState.error.message}
+            </p>
           ) : null}
         </div>
       )}

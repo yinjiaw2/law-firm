@@ -1,40 +1,48 @@
 "use client";
 
+import { useState } from "react";
+import { useForm, useWatch } from "react-hook-form";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { ContactFormStep1 } from "@/src/features/contact/components/contact-form-step1";
-import type { PrimaryReason } from "@/src/features/contact/models";
-import { step1Schema } from "@/src/features/contact/models";
+import { ContactFormStep2 } from "@/src/features/contact/components/contact-form-step2";
+import type { ContactFormData } from "@/src/features/contact/models";
 import { useTranslations } from "next-intl";
-import { useForm } from "react-hook-form";
-
-type Step1FormValues = {
-  primary_reason?: PrimaryReason;
-};
-
-const defaultValues: Step1FormValues = {
-  primary_reason: undefined,
-};
 
 export function ContactForm() {
   const t = useTranslations("contact.form");
+  const [currentStep, setCurrentStep] = useState(1);
+
   const {
     control,
     handleSubmit,
-    formState: { errors, isSubmitting },
-  } = useForm<Step1FormValues>({
-    defaultValues,
+    trigger,
+    formState: { isSubmitting },
+  } = useForm<ContactFormData>({
+    defaultValues: {
+      primary_reason: undefined,
+      location: undefined,
+      current_visa: undefined,
+      migration_stream: undefined,
+      notification_date: undefined,
+      refusal_issue: undefined,
+      bridging_visa: undefined,
+    },
     mode: "onSubmit",
   });
 
-  const onSubmit = async (values: Step1FormValues) => {
-    const result = step1Schema.safeParse(values);
+  const primaryReason = useWatch({ control, name: "primary_reason" });
+  const isHighUrgency =
+    primaryReason === "crisis" || primaryReason === "art";
 
-    if (!result.success) {
-      return;
-    }
+  const handleContinue = async () => {
+    const valid = await trigger("primary_reason");
+    if (!valid || !primaryReason) return;
+    setCurrentStep(primaryReason === "general" ? 3 : 2);
+  };
 
-    console.log(result.data);
+  const onSubmit = async (values: ContactFormData) => {
+    console.log(values);
   };
 
   return (
@@ -46,14 +54,39 @@ export function ContactForm() {
         </CardHeader>
         <CardContent>
           <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
-            <ContactFormStep1
-              control={control}
-              errorMessage={errors.primary_reason?.message}
-            />
-            <div className="flex justify-end">
-              <Button type="submit" disabled={isSubmitting}>
-                {t("submit")}
-              </Button>
+            {currentStep === 1 && (
+              <ContactFormStep1 control={control} />
+            )}
+
+            {currentStep === 2 && (
+              <ContactFormStep2
+                control={control}
+                isHighUrgency={isHighUrgency}
+              />
+            )}
+
+            <div className="flex items-center justify-between">
+              {currentStep > 1 ? (
+                <Button
+                  type="button"
+                  variant="outline"
+                  onClick={() => setCurrentStep((s) => s - 1)}
+                >
+                  {t("back")}
+                </Button>
+              ) : (
+                <div />
+              )}
+
+              {currentStep === 1 ? (
+                <Button type="button" onClick={handleContinue} disabled={isSubmitting}>
+                  {t("submit")}
+                </Button>
+              ) : (
+                <Button type="submit" disabled={isSubmitting}>
+                  {t("submit")}
+                </Button>
+              )}
             </div>
           </form>
         </CardContent>

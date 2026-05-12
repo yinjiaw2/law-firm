@@ -2,7 +2,8 @@
   "form": {
     "title": "Strategic migration intake",
     "description": "Start with the primary reason for your inquiry so we can triage your matter correctly.",
-    "submit": "Continue"
+    "submit": "Continue",
+    "back": "Back"
   },
   "step1": {
     "phase": "Phase 1: Entry & Primary Triage",
