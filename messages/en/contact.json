@@ -11,22 +11,18 @@
     "options": {
       "planning": {
         "label": "A",
-        "title": "Plan a new visa application",
         "description": "I want to plan a new visa application."
       },
       "crisis": {
         "label": "B",
-        "title": "Visa refusal or cancellation",
         "description": "I have received a visa refusal or cancellation."
       },
       "art": {
         "label": "C",
-        "title": "ART representation",
         "description": "I need representation for an ART case."
       },
       "general": {
         "label": "D",
-        "title": "Citizenship or general advice",
         "description": "I am interested in Australian citizenship or other general advice."
       }
     }

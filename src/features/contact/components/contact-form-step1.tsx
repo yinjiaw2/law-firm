@@ -35,29 +35,32 @@ export function ContactFormStep1({
             </h2>
             <p className="text-sm text-muted-foreground">{t("description")}</p>
           </div>
-          <div className="flex flex-col gap-6 ">
+          <div className="flex flex-col flex-1 gap-6 ">
             {reasonOptions.map((reason) => {
               const isSelected = field.value === reason;
 
               return (
-                <div
+                <label
                   key={reason}
-                  className="flex flex-row items-center justify-center border rounded-lg py-3 px-4"
+                  className="flex cursor-pointer flex-row items-center gap-6 rounded-lg border py-3 px-4"
                 >
-                  <Checkbox />
-                  <p className="text-sm font-medium text-primary ml-6">
+                  <Checkbox
+                    checked={isSelected}
+                    onCheckedChange={() =>
+                      field.onChange(isSelected ? undefined : reason)
+                    }
+                    onBlur={field.onBlur}
+                  />
+                  <p className="text-sm font-medium text-primary">
                     {t(`options.${reason}.label`)}
                   </p>
 
                   <div className="flex flex-1 flex-col gap-1">
-                    <p className="text-sm font-semibold text-foreground">
-                      {t(`options.${reason}.title`)}
-                    </p>
                     <p className="text-sm text-muted-foreground">
                       {t(`options.${reason}.description`)}
                     </p>
                   </div>
-                </div>
+                </label>
               );
             })}
           </div>
