@@ -13,6 +13,7 @@ import {
 import { ContactFormStep1 } from "@/src/features/contact/components/contact-form-step1";
 import { ContactFormStep2 } from "@/src/features/contact/components/contact-form-step2";
 import { ContactFormStep3 } from "@/src/features/contact/components/contact-form-step3";
+import { ContactFormStep4 } from "@/src/features/contact/components/contact-form-step4";
 import type { ContactFormData } from "@/src/features/contact/models";
 import { useTranslations } from "next-intl";
 
@@ -67,6 +68,11 @@ export function ContactForm() {
       if (!valid) return;
     }
 
+    if (currentStep === 3) {
+      const valid = await trigger(["age_group", "education", "english_level"]);
+      if (!valid) return;
+    }
+
     setCurrentStep((step) => step + 1);
     setTimeout(() => {
       clearErrors();
@@ -100,6 +106,8 @@ export function ContactForm() {
 
             {currentStep === 3 && <ContactFormStep3 control={control} />}
 
+            {currentStep === 4 && <ContactFormStep4 control={control} />}
+
             <div className="flex items-center justify-between">
               {currentStep > 1 ? (
                 <Button
@@ -113,7 +121,7 @@ export function ContactForm() {
                 <div />
               )}
 
-              {currentStep < 3 ? (
+              {currentStep < 4 ? (
                 <Button
                   type="button"
                   onClick={handleContinue}
@@ -123,7 +131,7 @@ export function ContactForm() {
                 </Button>
               ) : (
                 <Button type="submit" disabled={isSubmitting}>
-                  {t("submit")}
+                  {isHighUrgency ? t("emergencySubmit") : t("inquirySubmit")}
                 </Button>
               )}
             </div>

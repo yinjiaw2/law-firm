@@ -3,6 +3,8 @@
     "title": "战略移民咨询表",
     "description": "请先选择您本次咨询的主要原因，以便我们准确分流和评估您的案件。",
     "submit": "继续",
+    "emergencySubmit": "申请紧急咨询",
+    "inquirySubmit": "提交咨询",
     "back": "返回"
   },
   "step1": {
@@ -109,6 +111,23 @@
       }
     }
   },
+  "step4": {
+    "phase": "第四阶段：结论与联系方式收集",
+    "timeline": {
+      "title": "您希望多快开始您的申请/办理流程？",
+      "options": {
+        "immediately": "立即开始",
+        "within_3_months": "3 个月内",
+        "six_months_or_longer": "6 个月或更久"
+      }
+    },
+    "lead": {
+      "title": "联系方式表单",
+      "full_name": "姓名",
+      "email": "电子邮箱",
+      "phone": "电话号码"
+    }
+  },
   "validation": {
     "primaryReasonRequired": "请选择一个原因后再继续。",
     "locationRequired": "请选择您当前所在位置。",
@@ -119,6 +138,11 @@
     "bridgingVisaRequired": "请选择您当前的签证状态。",
     "ageGroupRequired": "请选择您的年龄段。",
     "educationRequired": "请选择您的学历水平。",
-    "englishLevelRequired": "请选择您的英语能力等级。"
+    "englishLevelRequired": "请选择您的英语能力等级。",
+    "timelineRequired": "请选择您希望开始的时间。",
+    "fullNameRequired": "请输入您的姓名。",
+    "emailRequired": "请输入您的电子邮箱。",
+    "emailInvalid": "请输入有效的电子邮箱地址。",
+    "phoneRequired": "请输入您的电话号码。"
   }
 }

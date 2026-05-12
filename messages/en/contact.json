@@ -3,6 +3,8 @@
     "title": "Strategic migration intake",
     "description": "Start with the primary reason for your inquiry so we can triage your matter correctly.",
     "submit": "Continue",
+    "emergencySubmit": "Request Emergency Consultation",
+    "inquirySubmit": "Submit Inquiry.",
     "back": "Back"
   },
   "step1": {
@@ -109,6 +111,23 @@
       }
     }
   },
+  "step4": {
+    "phase": "Phase 4: Conclusion & Lead Capture",
+    "timeline": {
+      "title": "How soon are you looking to start your application/process?",
+      "options": {
+        "immediately": "Immediately",
+        "within_3_months": "Within 3 months",
+        "six_months_or_longer": "6 months or longer"
+      }
+    },
+    "lead": {
+      "title": "Lead Form",
+      "full_name": "Full Name",
+      "email": "Email Address",
+      "phone": "Phone Number"
+    }
+  },
   "validation": {
     "primaryReasonRequired": "Please select a reason before continuing.",
     "locationRequired": "Please select your current location.",
@@ -119,6 +138,11 @@
     "bridgingVisaRequired": "Please select your current visa status.",
     "ageGroupRequired": "Please select your age group.",
     "educationRequired": "Please select your education level.",
-    "englishLevelRequired": "Please select your English proficiency level."
+    "englishLevelRequired": "Please select your English proficiency level.",
+    "timelineRequired": "Please select how soon you want to start.",
+    "fullNameRequired": "Please enter your full name.",
+    "emailRequired": "Please enter your email address.",
+    "emailInvalid": "Please enter a valid email address.",
+    "phoneRequired": "Please enter your phone number."
   }
 }
