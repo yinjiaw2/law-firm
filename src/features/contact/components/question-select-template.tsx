@@ -70,7 +70,6 @@ export function QuestionSelectTemplate<
                 >
                   <Checkbox
                     checked={isSelected}
-                    onBlur={field.onBlur}
                     onCheckedChange={(checked) => {
                       if (!checked && isSelected) {
                         return;

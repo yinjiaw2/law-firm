@@ -3,7 +3,13 @@
 import { useState } from "react";
 import { useForm, useWatch } from "react-hook-form";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { ContactFormStep1 } from "@/src/features/contact/components/contact-form-step1";
 import { ContactFormStep2 } from "@/src/features/contact/components/contact-form-step2";
 import type { ContactFormData } from "@/src/features/contact/models";
@@ -18,6 +24,7 @@ export function ContactForm() {
     handleSubmit,
     trigger,
     formState: { isSubmitting },
+    clearErrors,
   } = useForm<ContactFormData>({
     defaultValues: {
       primary_reason: undefined,
@@ -32,13 +39,15 @@ export function ContactForm() {
   });
 
   const primaryReason = useWatch({ control, name: "primary_reason" });
-  const isHighUrgency =
-    primaryReason === "crisis" || primaryReason === "art";
+  const isHighUrgency = primaryReason === "crisis" || primaryReason === "art";
 
   const handleContinue = async () => {
     const valid = await trigger("primary_reason");
     if (!valid || !primaryReason) return;
     setCurrentStep(primaryReason === "general" ? 3 : 2);
+    setTimeout(() => {
+      clearErrors();
+    }, 0);
   };
 
   const onSubmit = async (values: ContactFormData) => {
@@ -53,10 +62,11 @@ export function ContactForm() {
           <CardDescription>{t("description")}</CardDescription>
         </CardHeader>
         <CardContent>
-          <form className="flex flex-col gap-6" onSubmit={handleSubmit(onSubmit)}>
-            {currentStep === 1 && (
-              <ContactFormStep1 control={control} />
-            )}
+          <form
+            className="flex flex-col gap-6"
+            onSubmit={handleSubmit(onSubmit)}
+          >
+            {currentStep === 1 && <ContactFormStep1 control={control} />}
 
             {currentStep === 2 && (
               <ContactFormStep2
@@ -79,7 +89,11 @@ export function ContactForm() {
               )}
 
               {currentStep === 1 ? (
-                <Button type="button" onClick={handleContinue} disabled={isSubmitting}>
+                <Button
+                  type="button"
+                  onClick={handleContinue}
+                  disabled={isSubmitting}
+                >
                   {t("submit")}
                 </Button>
               ) : (
