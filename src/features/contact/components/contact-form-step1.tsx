@@ -44,13 +44,14 @@ export function ContactFormStep1({
                   key={reason}
                   className="flex cursor-pointer flex-row items-center gap-6 rounded-lg border py-3 px-4"
                 >
-                  <Checkbox
-                    checked={isSelected}
-                    onCheckedChange={() =>
-                      field.onChange(isSelected ? undefined : reason)
-                    }
-                    onBlur={field.onBlur}
-                  />
+	                  <Checkbox
+	                    checked={isSelected}
+	                    onCheckedChange={(checked) => {
+	                      console.log("step1 checkbox changed", { checked, reason });
+	                      field.onChange(checked ? reason : undefined);
+	                    }}
+	                    onBlur={field.onBlur}
+	                  />
                   <p className="text-sm font-medium text-primary">
                     {t(`options.${reason}.label`)}
                   </p>
