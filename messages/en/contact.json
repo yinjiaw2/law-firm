@@ -5,7 +5,10 @@
     "submit": "Continue",
     "emergencySubmit": "Request Emergency Consultation",
     "inquirySubmit": "Submit Inquiry.",
-    "back": "Back"
+    "back": "Back",
+    "submitError": "Something went wrong. Please try again.",
+    "successTitle": "Thank you for your inquiry.",
+    "successDescription": "We have received your submission and will be in touch shortly."
   },
   "step1": {
     "phase": "Phase 1: Entry & Primary Triage",

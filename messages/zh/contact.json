@@ -5,7 +5,10 @@
     "submit": "继续",
     "emergencySubmit": "申请紧急咨询",
     "inquirySubmit": "提交咨询",
-    "back": "返回"
+    "back": "返回",
+    "submitError": "提交失败，请稍后再试。",
+    "successTitle": "感谢您的咨询。",
+    "successDescription": "我们已收到您的提交，将尽快与您联系。"
   },
   "step1": {
     "phase": "第一阶段：初步进入与主要分流",

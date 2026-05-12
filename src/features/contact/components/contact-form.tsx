@@ -17,9 +17,14 @@ import { ContactFormStep4 } from "@/src/features/contact/components/contact-form
 import type { ContactFormData } from "@/src/features/contact/models";
 import { useTranslations } from "next-intl";
 
+const GOOGLE_SCRIPT_URL = process.env.NEXT_PUBLIC_GOOGLE_SCRIPT_URL!;
+
 export function ContactForm() {
   const t = useTranslations("contact.form");
   const [currentStep, setCurrentStep] = useState(1);
+  const [submitStatus, setSubmitStatus] = useState<
+    "idle" | "success" | "error"
+  >("idle");
 
   const {
     control,
@@ -80,8 +85,30 @@ export function ContactForm() {
   };
 
   const onSubmit = async (values: ContactFormData) => {
-    console.log(values);
+    try {
+      await fetch(GOOGLE_SCRIPT_URL, {
+        method: "POST",
+        mode: "no-cors",
+        body: JSON.stringify({ ...values, is_high_urgency: isHighUrgency }),
+      });
+      setSubmitStatus("success");
+    } catch {
+      setSubmitStatus("error");
+    }
   };
+
+  if (submitStatus === "success") {
+    return (
+      <div className="flex w-full justify-center px-4 py-10">
+        <Card className="w-full max-w-3xl">
+          <CardHeader className="flex flex-col gap-2">
+            <CardTitle>{t("successTitle")}</CardTitle>
+            <CardDescription>{t("successDescription")}</CardDescription>
+          </CardHeader>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="flex w-full justify-center px-4 py-10">
@@ -108,32 +135,39 @@ export function ContactForm() {
 
             {currentStep === 4 && <ContactFormStep4 control={control} />}
 
-            <div className="flex items-center justify-between">
-              {currentStep > 1 ? (
-                <Button
-                  type="button"
-                  variant="outline"
-                  onClick={() => setCurrentStep((s) => s - 1)}
-                >
-                  {t("back")}
-                </Button>
-              ) : (
-                <div />
+            <div className="flex flex-col gap-3">
+              {submitStatus === "error" && (
+                <p className="text-sm text-destructive text-right">
+                  {t("submitError")}
+                </p>
               )}
+              <div className="flex items-center justify-between">
+                {currentStep > 1 ? (
+                  <Button
+                    type="button"
+                    variant="outline"
+                    onClick={() => setCurrentStep((s) => s - 1)}
+                  >
+                    {t("back")}
+                  </Button>
+                ) : (
+                  <div />
+                )}
 
-              {currentStep < 4 ? (
-                <Button
-                  type="button"
-                  onClick={handleContinue}
-                  disabled={isSubmitting}
-                >
-                  {t("submit")}
-                </Button>
-              ) : (
-                <Button type="submit" disabled={isSubmitting}>
-                  {isHighUrgency ? t("emergencySubmit") : t("inquirySubmit")}
-                </Button>
-              )}
+                {currentStep < 4 ? (
+                  <Button
+                    type="button"
+                    onClick={handleContinue}
+                    disabled={isSubmitting}
+                  >
+                    {t("submit")}
+                  </Button>
+                ) : (
+                  <Button type="submit" disabled={isSubmitting}>
+                    {isHighUrgency ? t("emergencySubmit") : t("inquirySubmit")}
+                  </Button>
+                )}
+              </div>
             </div>
           </form>
         </CardContent>
