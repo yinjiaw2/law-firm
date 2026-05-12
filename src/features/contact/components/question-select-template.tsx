@@ -59,7 +59,7 @@ export function QuestionSelectTemplate<
               </p>
             ) : null}
           </div>
-          <div className="flex flex-1 flex-col gap-6">
+          <div className="flex flex-1 flex-col gap-2">
             {options.map((option, index) => {
               const isSelected = field.value === option.value;
 

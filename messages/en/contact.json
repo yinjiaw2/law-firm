@@ -78,6 +78,37 @@
       }
     }
   },
+  "step3": {
+    "phase": "Phase 3: Personal Profile",
+    "age_group": {
+      "title": "What is your age group?",
+      "options": {
+        "18_24": "18–24",
+        "25_32": "25–32",
+        "33_39": "33–39",
+        "40_44": "40–44",
+        "45_plus": "45 or older"
+      }
+    },
+    "education": {
+      "title": "What is your highest level of completed education?",
+      "options": {
+        "doctorate": "Doctorate (PhD)",
+        "masters_bachelors": "Master's or Bachelor's Degree",
+        "diploma_trade": "Advanced Diploma or Trade Qualification",
+        "secondary_below": "Secondary School or below"
+      }
+    },
+    "english_level": {
+      "title": "What is your current English language proficiency (IELTS/PTE)?",
+      "options": {
+        "superior": "Superior (IELTS 8.0+ / PTE 79+ each band)",
+        "proficient": "Proficient (IELTS 7.0+ / PTE 65+ each band)",
+        "competent": "Competent (IELTS 6.0+ / PTE 50+ each band)",
+        "not_tested": "I have not taken a test yet."
+      }
+    }
+  },
   "validation": {
     "primaryReasonRequired": "Please select a reason before continuing.",
     "locationRequired": "Please select your current location.",
@@ -85,6 +116,9 @@
     "migrationStreamRequired": "Please select a migration stream.",
     "notificationDateRequired": "Please select when you received the notification.",
     "refusalIssueRequired": "Please select the issue mentioned in the letter.",
-    "bridgingVisaRequired": "Please select your current visa status."
+    "bridgingVisaRequired": "Please select your current visa status.",
+    "ageGroupRequired": "Please select your age group.",
+    "educationRequired": "Please select your education level.",
+    "englishLevelRequired": "Please select your English proficiency level."
   }
 }

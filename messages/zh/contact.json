@@ -2,7 +2,8 @@
   "form": {
     "title": "战略移民咨询表",
     "description": "请先选择您本次咨询的主要原因，以便我们准确分流和评估您的案件。",
-    "submit": "继续"
+    "submit": "继续",
+    "back": "返回"
   },
   "step1": {
     "phase": "第一阶段：初步进入与主要分流",
@@ -15,7 +16,109 @@
       "general": { "description": "我对澳大利亚公民申请或其他一般建议感兴趣。" }
     }
   },
+  "step2": {
+    "planning": {
+      "phase": "第二阶段：签证规划",
+      "location": {
+        "title": "您目前位于哪里？",
+        "options": {
+          "onshore": { "description": "在澳大利亚境内（Onshore）" },
+          "offshore": { "description": "在澳大利亚境外（Offshore）" }
+        }
+      },
+      "current_visa": {
+        "title": "您当前持有的签证子类别是什么？",
+        "options": {
+          "student_500": { "description": "学生签证（500）" },
+          "graduate_485": { "description": "临时毕业生签证（485）" },
+          "work_482": { "description": "临时工作签证（482/494）" },
+          "visitor_600": { "description": "访客签证（600）" },
+          "other": { "description": "其他（过桥签、打工度假等）" }
+        }
+      },
+      "migration_stream": {
+        "title": "您主要感兴趣的移民路径是什么？",
+        "options": {
+          "skilled": { "description": "技术移民（General Skilled Migration）" },
+          "employer": { "description": "雇主担保（工作签证）" },
+          "business": { "description": "商业与投资" },
+          "family": { "description": "家庭 / 配偶 / 父母类" }
+        }
+      }
+    },
+    "crisis": {
+      "phase": "第二阶段：紧急情况评估",
+      "notification_date": {
+        "title": "您是在什么时候收到移民局正式通知的？",
+        "options": {
+          "within_7": { "description": "过去 7 天内（最高优先级）" },
+          "within_21": { "description": "8 到 21 天前" },
+          "over_21": { "description": "21 天以上" },
+          "no_letter": { "description": "我现在手边没有那封信。" }
+        }
+      },
+      "refusal_issue": {
+        "title": "信中提到的具体问题是什么？",
+        "options": {
+          "gte": { "description": "GTE（真实临时入境者）或真实访客相关问题。" },
+          "financial": { "description": "资金能力不足或涉嫌材料造假。" },
+          "skills": { "description": "职业评估或工作经验条件未满足。" },
+          "health": { "description": "健康或品格要求问题。" },
+          "breach": { "description": "违反当前签证条款。" }
+        }
+      },
+      "bridging_visa": {
+        "title": "您目前是否持有过桥签证？",
+        "options": {
+          "bva_bvb_bvc": { "description": "是（BVA、BVB 或 BVC）" },
+          "bve": { "description": "是（BVE）" },
+          "substantive": { "description": "否，我目前仍持有实质性签证。" },
+          "none": { "description": "否，我目前没有有效签证。" }
+        }
+      }
+    }
+  },
+  "step3": {
+    "phase": "第三阶段：个人背景",
+    "age_group": {
+      "title": "您的年龄段是？",
+      "options": {
+        "18_24": "18–24 岁",
+        "25_32": "25–32 岁",
+        "33_39": "33–39 岁",
+        "40_44": "40–44 岁",
+        "45_plus": "45 岁或以上"
+      }
+    },
+    "education": {
+      "title": "您的最高完成学历是？",
+      "options": {
+        "doctorate": "博士学位（PhD）",
+        "masters_bachelors": "硕士或本科学位",
+        "diploma_trade": "高级文凭或职业技能资格",
+        "secondary_below": "高中或以下"
+      }
+    },
+    "english_level": {
+      "title": "您目前的英语语言能力如何（雅思/PTE）？",
+      "options": {
+        "superior": "卓越（雅思 8.0+ / PTE 各单项 79+）",
+        "proficient": "精通（雅思 7.0+ / PTE 各单项 65+）",
+        "competent": "胜任（雅思 6.0+ / PTE 各单项 50+）",
+        "not_tested": "我尚未参加语言测试。"
+      }
+    }
+  },
   "validation": {
-    "primaryReasonRequired": "请选择一个原因后再继续。"
+    "primaryReasonRequired": "请选择一个原因后再继续。",
+    "locationRequired": "请选择您当前所在位置。",
+    "currentVisaRequired": "请选择您当前的签证子类别。",
+    "migrationStreamRequired": "请选择一个移民路径。",
+    "notificationDateRequired": "请选择您收到通知的时间。",
+    "refusalIssueRequired": "请选择信中提到的问题。",
+    "bridgingVisaRequired": "请选择您当前的签证状态。",
+    "ageGroupRequired": "请选择您的年龄段。",
+    "educationRequired": "请选择您的学历水平。",
+    "englishLevelRequired": "请选择您的英语能力等级。"
   }
 }
