@@ -1,0 +1,37 @@
+{
+  "form": {
+    "title": "Strategic migration intake",
+    "description": "Start with the primary reason for your inquiry so we can triage your matter correctly.",
+    "submit": "Continue"
+  },
+  "step1": {
+    "phase": "Phase 1: Entry & Primary Triage",
+    "title": "What is the primary reason for your inquiry today?",
+    "description": "Choose the option that best matches your current migration matter.",
+    "options": {
+      "planning": {
+        "label": "A",
+        "title": "Plan a new visa application",
+        "description": "I want to plan a new visa application."
+      },
+      "crisis": {
+        "label": "B",
+        "title": "Visa refusal or cancellation",
+        "description": "I have received a visa refusal or cancellation."
+      },
+      "art": {
+        "label": "C",
+        "title": "ART representation",
+        "description": "I need representation for an ART case."
+      },
+      "general": {
+        "label": "D",
+        "title": "Citizenship or general advice",
+        "description": "I am interested in Australian citizenship or other general advice."
+      }
+    }
+  },
+  "validation": {
+    "primaryReasonRequired": "Please select a reason before continuing."
+  }
+}

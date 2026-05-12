@@ -1,0 +1,37 @@
+{
+  "form": {
+    "title": "战略移民咨询表",
+    "description": "请先选择您本次咨询的主要原因，以便我们准确分流和评估您的案件。",
+    "submit": "继续"
+  },
+  "step1": {
+    "phase": "第一阶段：初步进入与主要分流",
+    "title": "您今天咨询的主要原因是什么？",
+    "description": "请选择最符合您当前移民事务的选项。",
+    "options": {
+      "planning": {
+        "label": "A",
+        "title": "规划新的签证申请",
+        "description": "我想规划新的签证申请。"
+      },
+      "crisis": {
+        "label": "B",
+        "title": "签证被拒或被取消",
+        "description": "我已收到签证拒签或取消通知。"
+      },
+      "art": {
+        "label": "C",
+        "title": "ART 案件代理",
+        "description": "我需要 ART 案件代理服务。"
+      },
+      "general": {
+        "label": "D",
+        "title": "公民申请或一般建议",
+        "description": "我对澳大利亚公民申请或其他一般建议感兴趣。"
+      }
+    }
+  },
+  "validation": {
+    "primaryReasonRequired": "请选择一个原因后再继续。"
+  }
+}
