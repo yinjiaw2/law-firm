@@ -50,7 +50,7 @@ export function QuestionSelectTemplate<
       render={({ field, fieldState }) => (
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-1">
-            <h2 className="text-xl font-semibold text-foreground">
+            <h2 className="text-lg font-semibold text-muted-foreground">
               {question.title}
             </h2>
             {question.description ? (

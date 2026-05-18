@@ -1,6 +1,9 @@
 "use client";
 
-import type { ContactFormData, PrimaryReason } from "@/src/features/contact/models";
+import type {
+  ContactFormData,
+  PrimaryReason,
+} from "@/src/features/contact/models";
 import { QuestionSelectTemplate } from "@/src/features/contact/components/question-select-template";
 import { useTranslations } from "next-intl";
 import type { Control } from "react-hook-form";
@@ -11,9 +14,7 @@ type ContactFormStep1Props = {
 
 const reasonOptions: PrimaryReason[] = ["planning", "crisis", "art", "general"];
 
-export function ContactFormStep1({
-  control,
-}: ContactFormStep1Props) {
+export function ContactFormStep1({ control }: ContactFormStep1Props) {
   const t = useTranslations("contact.step1");
   const validationT = useTranslations("contact.validation");
   const options = reasonOptions.map((reason) => ({
@@ -29,9 +30,7 @@ export function ContactFormStep1({
   return (
     <div>
       <div className="mb-2 flex flex-col gap-1">
-        <p className="text-sm font-medium text-muted-foreground">
-          {t("phase")}
-        </p>
+        <p className="text-lg font-medium">{t("phase")}</p>
       </div>
       <QuestionSelectTemplate
         control={control}

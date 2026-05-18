@@ -114,7 +114,7 @@ export function ContactForm() {
     <div className="flex w-full justify-center px-4 py-10">
       <Card className="w-full max-w-3xl">
         <CardHeader className="flex flex-col gap-2">
-          <CardTitle>{t("title")}</CardTitle>
+          <CardTitle className="text-3xl">{t("title")}</CardTitle>
           <CardDescription>{t("description")}</CardDescription>
         </CardHeader>
         <CardContent>
