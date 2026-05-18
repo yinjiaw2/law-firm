@@ -1,4 +1,6 @@
 {
   "greeting": "Hello",
-  "farewell": "Goodbye"
+  "farewell": "Goodbye",
+  "contactButton": "Contact Us",
+  "languageToggle": "中文"
 }

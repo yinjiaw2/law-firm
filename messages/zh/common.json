@@ -1,4 +1,6 @@
 {
   "greeting": "你好",
-  "farewell": "再见"
+  "farewell": "再见",
+  "contactButton": "联系我们",
+  "languageToggle": "English"
 }
